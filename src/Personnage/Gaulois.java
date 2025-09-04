@@ -1,13 +1,11 @@
 package Personnage;
 
 
-public class Gaulois extends Personnage{
+public class Gaulois extends Combattant{
 	public Gaulois(String nom, int force) {
-		super(nom);
-		this.force=force;
+		super(nom, force);
 	}
 
-	private int force;
 	private int effetPotion = 1;
 	
 	
@@ -17,15 +15,6 @@ public class Gaulois extends Personnage{
 //		.append(texte).append("».");
 //		System.out.println(txt);
 //	}
-	
-	public void frapper(Romain romain) {
-		StringBuilder txt = new StringBuilder();
-		txt.append(this.getNom())
-		.append(" envoie un grand coup dans la mâchoire de ").append(romain.getNom());
-		System.out.println(txt);
-		romain.recevoirCoup((this.force/3)*this.effetPotion);
-		if (this.effetPotion>1) {this.effetPotion--;}
-	}
 	
 	
 	public void boirePotion(int forcePotion) {
@@ -37,6 +26,17 @@ public class Gaulois extends Personnage{
 	
 	public String prendreParole() {
 		return "Le gaulois"+super.prendreParole();
+	}
+	
+	@Override
+	
+	public void frapper(Combattant romain) {
+		StringBuilder txt = new StringBuilder();
+		txt.append(this.getNom())
+		.append(" envoie un grand coup dans la mâchoire de ").append(romain.getNom());
+		System.out.println(txt);
+		romain.recevoirCoup((this.getForce()/3)*this.effetPotion);
+		if (this.effetPotion>1) {this.effetPotion--;}
 	}
 
 }
