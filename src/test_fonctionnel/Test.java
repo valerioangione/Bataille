@@ -7,7 +7,7 @@ public class Test {
 	public static void main(String[] args) {
 	
 		Druide druide = new Druide(5,10);
-		druide.parler("Je vais aller préparer une petite potion...!!!! ");
+		druide.parler("Je vais aller préparer une petite potion... ");
 		druide.preparerPotion();
 		Gaulois obelix = new Gaulois("Obélix", 100);
 		druide.booster(obelix);
