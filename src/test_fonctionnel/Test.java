@@ -7,12 +7,12 @@ public class Test {
 	public static void main(String[] args) {
 	
 		Druide druide = new Druide(5,10);
-		druide.parler("Je vais aller préparer une petite potion... ");
+		druide.parler("Je vais aller prÃ©parer une petite potion...!!!! ");
 		druide.preparerPotion();
-		Gaulois obelix = new Gaulois("Obélix", 100);
+		Gaulois obelix = new Gaulois("ObÃ©lix", 100);
 		druide.booster(obelix);
-		Gaulois asterix= new Gaulois("Astérix",8);
-		asterix.parler("Bonjour à tous");
+		Gaulois asterix= new Gaulois("AstÃ©rix",8);
+		asterix.parler("Bonjour Ã  tous");
 		druide.booster(asterix);
 		Romain minus= new Romain("Minus",6);
 		minus.sEquiper(Equipement.CASQUE);
