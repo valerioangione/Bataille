@@ -2,8 +2,9 @@ package Personnage;
 
 import java.util.Random;
 
-public class Druide {
-	public Druide(int min, int max) {
+public class Druide extends Personnage{
+	public Druide(String nom, int min, int max) {
+		super(nom);
 		this.FORCE_POTION_MIN=min;
 		this.FORCE_POTION_MAX=max;
 	}
@@ -12,11 +13,11 @@ public class Druide {
 	private final int FORCE_POTION_MAX;
 	private int forcePotion=0;
 	
-	public void parler(String texte) {
-		StringBuilder txt = new StringBuilder();
-		txt.append("Le druide : «").append(texte).append("».");
-		System.out.println(txt);
-	}
+//	public void parler(String texte) {
+//		StringBuilder txt = new StringBuilder();
+//		txt.append("Le druide : «").append(texte).append("».");
+//		System.out.println(txt);
+//	}
 	
 	public void preparerPotion() {
 		Random random = new Random();
@@ -35,4 +36,9 @@ public class Druide {
 		else {gaulois.boirePotion(forcePotion);}
 	}
 	
+	@Override
+	
+	public String prendreParole() {
+		return "Le druide"+super.prendreParole();
+	}
 }

@@ -1,30 +1,24 @@
 package Personnage;
 
-public class Romain {
+public class Romain extends Personnage{
 	
 	
 	public Romain(String nom, int force) {
-		super();
-		this.nom = nom;
+		super(nom);
 		this.force = force;
 	}
 
-	private String nom;
 	private int force;
 	private Equipement[] equipement=new Equipement[2];
 	private int nbEquipement;
 	
 	
-	public String getNom() {
-		return this.nom;
-	}
-	
-	public void parler(String texte) {
-		StringBuilder txt = new StringBuilder();
-		txt.append("Le romain ").append(this.getNom()).append(": «")
-		.append(texte).append("».");
-		System.out.println(txt);
-	}
+//	public void parler(String texte) {
+//		StringBuilder txt = new StringBuilder();
+//		txt.append("Le romain ").append(this.getNom()).append(": «")
+//		.append(texte).append("».");
+//		System.out.println(txt);
+//	}
 	
 	public void recevoirCoup(int coup) {
 		for (Equipement equip : equipement) {
@@ -41,7 +35,7 @@ public class Romain {
 		
 	public void sEquiper(Equipement equip) {
 		StringBuilder txt=new StringBuilder();
-		txt.append("Le soldat ").append(this.nom).append(" ");
+		txt.append("Le soldat ").append(this.getNom()).append(" ");
 		switch(nbEquipement) {
 		case 0:
 			ssEquiper(equip, txt);
@@ -66,5 +60,10 @@ public class Romain {
 		txt.append("s'équipe avec un ").append(equip.toString())
 		.append(".");
 	}
-
+	
+	@Override
+	
+	public String prendreParole() {
+		return "Le romain"+super.prendreParole();
+	}
 }
