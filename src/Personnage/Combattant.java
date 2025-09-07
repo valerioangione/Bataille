@@ -20,5 +20,9 @@ public abstract class Combattant extends Personnage{
 		return this.force;
 	}
 	
+	public boolean isKO() {
+		return force <= 0;
+	}
+	
 	public abstract void frapper(Combattant combattant);
 }

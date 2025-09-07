@@ -5,30 +5,37 @@ import java.util.Random;
 public class Druide extends Personnage{
 	public Druide(String nom, int min, int max) {
 		super(nom);
-		this.FORCE_POTION_MIN=min;
-		this.FORCE_POTION_MAX=max;
+		if (max > min) {
+			this.FORCE_POTION_MIN = min;
+			this.FORCE_POTION_MAX = max;
+			 } else {
+			this.FORCE_POTION_MIN = max;
+			this.FORCE_POTION_MAX = min;
+			 } 
 	}
 	
 	private final int FORCE_POTION_MIN;
 	private final int FORCE_POTION_MAX;
-	private int forcePotion=0;
+	private int forcePotion=1;
 	
-//	public void parler(String texte) {
-//		StringBuilder txt = new StringBuilder();
-//		txt.append("Le druide : «").append(texte).append("».");
-//		System.out.println(txt);
-//	}
 	
 	public void preparerPotion() {
 		Random random = new Random();
-		while (forcePotion <FORCE_POTION_MIN) {
-			forcePotion = random.nextInt(FORCE_POTION_MAX+1);
+//		while (forcePotion <FORCE_POTION_MIN) {
+//			forcePotion = random.nextInt(FORCE_POTION_MAX+1);
+//		}
+		try {
+		forcePotion = random.nextInt(FORCE_POTION_MAX-FORCE_POTION_MIN+1)+FORCE_POTION_MIN;
+		} catch(IllegalArgumentException e){
+			System.out.println("test excepetion 1 autour du random");
 		}
+		System.out.println(forcePotion);
 		if (forcePotion>7) {this.parler("J'ai préparé une super potion de force " + forcePotion);}
 		else {this.parler("Je n'ai pas trouvé tous les ingrédients ma potion est seulement de force "+ forcePotion);}	
 	}
 	
-	public void booster(Gaulois gaulois) {
+	public void booster(Gaulois gaulois) throws PotionNonPreteException {
+		if (forcePotion == 1) { throw new PotionNonPreteException();}
 		if (gaulois.getNom()== "Obélix") {
 			this.parler("Non, Obélix !... Tu n'auras pas de potion magique !");
 			gaulois.parler("Par Bélénos, ce n'est pas juste !");

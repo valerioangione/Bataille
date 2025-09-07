@@ -4,11 +4,18 @@ import Personnage.*;
 
 public class Bataille {
 	
+	public Bataille(Presentateur narrateur) {
+		this.narrateur=narrateur;
+		narrateur.afficherDecor();
+	}
 	
 	private Romain[] equipeRomaine = new Romain[3];
 	private Gaulois[] equipeGauloise = new Gaulois[3];
 	private int nbRomain=0;
 	private int nbGaulois=0;
+	private int nbVictoireRomaine = 0;
+	private int nbVictoireGauloise = 0;
+	private Narrateur narrateur;
 	
 	public void ajouterRomain(Romain romain) {
 		if (nbRomain<3) {
@@ -45,6 +52,35 @@ public class Bataille {
 		}
 		txt.append(".");
 		return txt.toString();
+	}
+	
+	public void combattre() {
+		Combattant gaulois = equipeGauloise[nbGaulois - 1];
+		Combattant romain = equipeRomaine[nbRomain - 1];
+		boolean vainqueur = false;
+		do {
+			romain.frapper(gaulois);
+			if (gaulois.isKO()) {
+				vainqueur = true;
+				nbGaulois--;
+				nbVictoireRomaine++;
+			} else {
+				gaulois.frapper(romain);
+				if (romain.isKO()) {
+					vainqueur = true;
+					nbRomain--;
+					nbVictoireGauloise++;
+				}
+			}
+		} while (!vainqueur);
+	}
+	
+	public boolean resteCombattant() {
+		return nbGaulois != 0 && nbRomain != 0;
+	}
+	
+	public void afficherVainqueur() {
+		narrateur.afficherVainqueur(nbVictoireGauloise, nbVictoireRomaine);
 	}
 	
 }

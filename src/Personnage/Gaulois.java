@@ -19,7 +19,7 @@ public class Gaulois extends Combattant{
 	
 	public void boirePotion(int forcePotion) {
 		this.effetPotion=forcePotion;
-		this.parler("Merci Druide, je suis que ma force est " + effetPotion + " fois décuplée.");
+		this.parler("Merci Druide, je sens que ma force est " + effetPotion + " fois décuplée.");
 	}
 	
 	@Override
