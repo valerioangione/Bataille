@@ -18,7 +18,7 @@ public class TestArmoricae {
 		presentateur.afficherTitre();
 		presentateur.afficherAuteur();
 		presentateur.afficherDebutLivre();
-		
+		// aaaaaaa //
 		Bataille bataille = new Bataille(presentateur);
 		bataille.ajouterGaulois(obelix);
 		bataille.ajouterGaulois(asterix);
