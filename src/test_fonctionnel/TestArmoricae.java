@@ -7,8 +7,8 @@ import Personnage.*;
 public class TestArmoricae {
 	public static void main(String[] args) {
 		Druide druide = new Druide("Panoramix", 10, 5);
-		Gaulois asterix = new Gaulois("Astérix", 8);
-		Gaulois obelix = new Gaulois("Obélix", 100);
+		Gaulois asterix = new Gaulois("AstÃ©rix", 8);
+		Gaulois obelix = new Gaulois("ObÃ©lix", 100);
 		Romain minus = new Romain("Minus", 6);
 		Romain chorus = new Romain("Chorus", 8);
 		Romain faitexcus = new Romain("Faitexcus", 7);
@@ -18,7 +18,6 @@ public class TestArmoricae {
 		presentateur.afficherTitre();
 		presentateur.afficherAuteur();
 		presentateur.afficherDebutLivre();
-		// aaaaaaaBBBBBBBBBBB //
 		Bataille bataille = new Bataille(presentateur);
 		bataille.ajouterGaulois(obelix);
 		bataille.ajouterGaulois(asterix);
